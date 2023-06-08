@@ -11,7 +11,7 @@ class Board
   end
 
   def self.from_file(filename)
-    rows = File.readlines("filename").map(&:chomp)
+    rows = File.readlines(filename).map(&:chomp)
     tiles = rows.map do |row|
       nums = row.split("").map { |char| Integer(char) }
       nums.map { |num| Tile.new(num) }
@@ -51,7 +51,7 @@ class Board
     grid.size
   end
 
-  alias_method :rows, :size
+  alias_method :rows, :grid
 
   def solved?
     rows.all? { |row| solved_set?(row) } &&

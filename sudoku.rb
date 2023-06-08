@@ -22,6 +22,14 @@ class SudokuGame
     end
   end
 
+  def parse_pos(string)
+    string.split(",").map { |char| Integer(char) }
+  end
+
+  def parse_val(string)
+    Integer(string)
+  end
+
   def get_pos
     pos = nil
     until pos && valid_pos?(pos)
@@ -65,11 +73,11 @@ class SudokuGame
   end
 
   def solved?
-    self.solved?
+    board.solved?
   end
 
   def valid_pos?(pos)
-    if pos.is_a?(:Array) &&
+    if pos.is_a?(Array) &&
       pos.length = 2 &&
       pos.all? { |x| x.in?(0, board.size - 1) }
       return true
