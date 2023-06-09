@@ -63,7 +63,7 @@ class SudokuGame
     board.render
     pos = get_pos
     val = get_val
-    board[*pos] = val
+    board[pos] = val
   end
 
   def run
@@ -78,8 +78,8 @@ class SudokuGame
 
   def valid_pos?(pos)
     if pos.is_a?(Array) &&
-      pos.length = 2 &&
-      pos.all? { |x| x.in?(0, board.size - 1) }
+      pos.length == 2 &&
+      pos.all? { |x| x.between?(0, board.size - 1) }
       return true
     else
       get_pos
